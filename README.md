@@ -1,7 +1,8 @@
 # TEDUH — Shade where people walk (prototype)
 
 **Sime Darby Property University Hackathon 2026 · Township of Tomorrow · Track: PLANET**
-Team: [TEAM NAME] · [UNIVERSITY] · Team leader: Zinat Ferdous
+Team TEDUH · Universiti Teknologi Malaysia (UTM)
+Zinat Ferdous (team leader, zinatferdousmicrosoft365@gmail.com) · Manjishtha Chakma · Shanjana Rahman Provi
 
 TEDUH (Malay: *shaded, sheltered*) is a heat-shade intelligence tool for township
 landscape teams, plus a resident app. It answers one question: **where should the
