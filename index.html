@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>TEDUH · Shade where people walk (prototype)</title>
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<div class="sample-banner" id="sampleBanner">SAMPLE DATA · synthetic precinct for demonstration only — not a survey of any real SDP township</div>
+<div class="shell">
+  <aside class="side">
+    <div class="brand">
+      <div class="logo">T</div>
+      <div><div class="brand-name">TEDUH</div><div class="brand-sub">Shade where people walk</div></div>
+    </div>
+    <nav id="nav">
+      <button data-view="overview" class="active"><span>◎</span> Overview</button>
+      <button data-view="map"><span>▦</span> Shade Gap Map</button>
+      <button data-view="planner"><span>✚</span> Planting Planner</button>
+      <button data-view="walk"><span>➜</span> Cool Walk <em>resident</em></button>
+      <button data-view="care"><span>♥</span> Tree Care <em>resident</em></button>
+    </nav>
+    <div class="side-foot">
+      <div class="pill">Track: PLANET</div>
+      <div class="muted small">Climate resilience · Biodiversity · Green transport</div>
+      <div class="muted small" style="margin-top:8px">Pilot concept: one City of Elmina precinct</div>
+    </div>
+  </aside>
+  <main>
+    <header class="top">
+      <div>
+        <h1 id="viewTitle">Overview</h1>
+        <div class="muted" id="viewSub">Precinct heat-shade status at a glance</div>
+      </div>
+      <div class="top-right">
+        <div class="chip">Precinct: <b>Sample Precinct 1</b></div>
+        <div class="chip">Heat layer: <b>simulated LST</b></div>
+      </div>
+    </header>
+
+    <!-- OVERVIEW -->
+    <section class="view active" id="view-overview">
+      <div class="kpis" id="kpis"></div>
+      <div class="grid2">
+        <div class="card">
+          <h3>Top 8 shade gaps to fix first</h3>
+          <table class="tbl" id="topGaps"></table>
+        </div>
+        <div class="card">
+          <h3>Why these streets?</h3>
+          <p class="muted">TEDUH ranks every street segment by a <b>Shade Gap Score</b>:</p>
+          <div class="formula">Score = Heat exposure × Pedestrian demand × Vulnerable users × Street orientation</div>
+          <ul class="why">
+            <li><b>Heat exposure</b> — satellite land-surface temperature (Landsat C2 L2, 30 m) × unshaded share of the footpath</li>
+            <li><b>Pedestrian demand</b> — predicted walking trips to schools, bus stops, surau, clinics, shops</li>
+            <li><b>Vulnerable users</b> — uplift near schools, clinics and senior centres</li>
+            <li><b>Orientation</b> — E–W streets get more sun; trees there cut heat stress the most (KL field study)</li>
+          </ul>
+          <p class="muted small">Prototype values are simulated. In the pilot they are replaced by real Landsat scenes, a canopy layer and on-street counts.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- MAP -->
+    <section class="view" id="view-map">
+      <div class="map-wrap">
+        <div class="card map-card"><svg id="mapSvg" class="map"></svg>
+          <div class="legend" id="legend"></div>
+        </div>
+        <div class="card detail" id="segDetail">
+          <h3>Select a street segment</h3>
+          <p class="muted">Click any street on the map to see why it scores the way it does.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- PLANNER -->
+    <section class="view" id="view-planner">
+      <div class="planner-controls card">
+        <div class="ctrl">
+          <label>Planting budget (RM)</label>
+          <input type="range" id="budget" min="30000" max="400000" step="10000" value="150000" />
+          <div class="big" id="budgetVal">RM150,000</div>
+        </div>
+        <div class="ctrl">
+          <label>Resident adoption rate</label>
+          <input type="range" id="adopt" min="0" max="100" step="10" value="50" />
+          <div class="big" id="adoptVal">50%</div>
+        </div>
+        <div class="ctrl species">
+          <label>Native species palette</label>
+          <div id="speciesBox"></div>
+        </div>
+        <button class="primary" id="runPlan">Optimise planting plan</button>
+      </div>
+      <div class="map-wrap">
+        <div class="card map-card"><svg id="planSvg" class="map"></svg></div>
+        <div class="card detail" id="planResult"><h3>Plan result</h3><p class="muted">Press “Optimise planting plan”.</p></div>
+      </div>
+    </section>
+
+    <!-- WALK -->
+    <section class="view" id="view-walk">
+      <div class="map-wrap">
+        <div class="card map-card"><svg id="walkSvg" class="map"></svg></div>
+        <div class="card detail phone">
+          <div class="phone-head">Cool Walk</div>
+          <label>From</label><select id="walkFrom"></select>
+          <label>To</label><select id="walkTo"></select>
+          <button class="primary" id="walkGo">Find my cool route</button>
+          <div id="walkResult"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CARE -->
+    <section class="view" id="view-care">
+      <div class="grid2">
+        <div class="card">
+          <h3>Adopt-a-Tree · watering priorities</h3>
+          <div class="ctrl inline"><label>Dry days in a row (forecast)</label>
+            <input type="range" id="dry" min="0" max="14" value="6" /><b id="dryVal">6</b></div>
+          <table class="tbl" id="careTbl"></table>
+        </div>
+        <div class="card">
+          <h3>Photo check-in (on-device AI)</h3>
+          <p class="muted small">Residents snap their adopted tree; TEDUH estimates leaf health and logs survival. Baseline uses an Excess-Green index; the pilot trains a model on labelled Elmina photos.</p>
+          <div class="photo-row">
+            <button class="ghost" data-sample="assets/sample_tree_healthy.jpg">Sample photo: healthy</button>
+            <button class="ghost" data-sample="assets/sample_tree_stressed.jpg">Sample photo: stressed</button>
+            <label class="ghost upload">Upload photo<input type="file" id="photoIn" accept="image/*" hidden /></label>
+          </div>
+          <div class="photo-out">
+            <canvas id="photoCanvas" width="320" height="240"></canvas>
+            <div id="photoResult" class="muted">No photo yet.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+<script src="data/sample_data.js"></script>
+<script src="engine.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
