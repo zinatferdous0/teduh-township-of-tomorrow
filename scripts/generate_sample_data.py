@@ -123,7 +123,7 @@ species_catalog = [
 
 out = {
     "meta": {
-        "label": "SYNTHETIC SAMPLE PRECINCT - not real survey data",
+        "label": "SYNTHETIC SAMPLE PRECINCT, not real survey data",
         "generated_by": "scripts/generate_sample_data.py (seed 2026)",
         "units": {"length": "m", "lst": "deg C (simulated land-surface temperature)", "cost": "RM (indicative assumption)"},
     },
@@ -133,5 +133,5 @@ out = {
              "x1": PARK["c1"] * SP_X - 20, "y1": PARK["r1"] * SP_Y - 20},
 }
 p = pathlib.Path(__file__).resolve().parent.parent / "data" / "sample_data.js"
-p.write_text("// AUTO-GENERATED SYNTHETIC SAMPLE DATA - see scripts/generate_sample_data.py\nwindow.TEDUH_SAMPLE = " + json.dumps(out) + ";\n")
+p.write_text("// AUTO-GENERATED SYNTHETIC SAMPLE DATA. See scripts/generate_sample_data.py\nwindow.TEDUH_SAMPLE = " + json.dumps(out) + ";\n")
 print("segments", len(segments), "trees", len(trees), "adopted", len(adopted), "->", p)

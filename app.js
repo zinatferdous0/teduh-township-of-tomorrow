@@ -14,7 +14,7 @@
   // ---------- navigation
   const titles = {
     overview: ["Overview", "Precinct heat-shade status at a glance"],
-    map: ["Shade Gap Map", "Where people walk in the sun — ranked by AI-assisted Shade Gap Score"],
+    map: ["Shade Gap Map", "Where people walk in the sun, ranked by an AI-assisted Shade Gap Score"],
     planner: ["Planting Planner", "Put each new tree where it cools the most people per ringgit"],
     walk: ["Cool Walk", "Resident view: the shadiest route, not just the shortest"],
     care: ["Tree Care", "Resident stewardship keeps young trees alive"],
@@ -91,7 +91,7 @@
   }
   function drawLegend() {
     document.getElementById("legend").innerHTML = "<b>Shade Gap Score</b>" +
-      [["Critical ≥70", "#c2410c"], ["High 45–69", "#f59e0b"], ["Moderate 25–44", "#facc15"], ["Low <25", "#22c55e"]]
+      [["Critical ≥70", "#c2410c"], ["High 45 to 69", "#f59e0b"], ["Moderate 25 to 44", "#facc15"], ["Low <25", "#22c55e"]]
         .map(([l, c]) => `<i style="background:${c}"></i>${l}`).join("") + "<span style='margin-left:12px'>● existing trees</span>";
   }
   function selectSeg(id) {
@@ -108,7 +108,7 @@
         ${bar("Heat exposure", sc.heat, `surface ${s.lst_c}°C · canopy ${pct(s.canopy)}`)}
         ${bar("Pedestrian demand", sc.demand, `~${s.walk_counts_sample} walks/day (sample)`)}
         ${bar("Vulnerable users", (sc.vul - 1) / 0.35, s.near_vulnerable ? "near school / clinic / seniors" : "none nearby")}
-        ${bar("Orientation", (sc.ori - 1) / 0.15, s.orientation === "E-W" ? "E–W: long sun exposure" : "N–S")}
+        ${bar("Orientation", (sc.ori - 1) / 0.15, s.orientation === "E-W" ? "East-west: long sun exposure" : "North-south")}
       </div>
       <div class="small"><b>Walk destinations nearby:</b> ${near.map(n => (ICON[n.d.type] || "") + " " + n.d.name.replace(" (sample)", "")).join(", ")}</div>
       <p class="small muted">Recommendation: ${sc.sgs >= 45 ? "prioritise shade trees on the sun-facing footpath in the next planting cycle." : "monitor; lower priority this cycle."}</p>`;

@@ -1,4 +1,4 @@
-# TEDUH — Shade where people walk (prototype)
+# TEDUH: shade where people walk (prototype)
 
 **Sime Darby Property University Hackathon 2026 · Township of Tomorrow · Track: PLANET**
 Team TEDUH · Universiti Teknologi Malaysia (UTM)
@@ -20,7 +20,7 @@ it alive?**
 | Screen | User | What it shows |
 |---|---|---|
 | **Overview** | SDP township / landscape team | KPIs and the top shade gaps to fix first |
-| **Shade Gap Map** | SDP township / landscape team | Every street segment scored 0–100 by *Heat exposure × Pedestrian demand × Vulnerable users × Orientation*; click a street for the breakdown |
+| **Shade Gap Map** | SDP township / landscape team | Every street segment is scored from 0 to 100 by *Heat exposure × Pedestrian demand × Vulnerable users × Orientation*; click a street for the breakdown |
 | **Planting Planner** | SDP landscape team | Budget + native species palette → optimised planting plan (benefit per RM, survival-adjusted, species-diversity cap, uplift for Endangered/Rare/Threatened natives) compared with a count-led plan with the same budget |
 | **Cool Walk** | Residents | Shortest vs shadiest walking route to school / bus stop / shops, with minutes in direct sun |
 | **Tree Care** | Residents (Adopt-a-Tree) | Watering priority by tree age, dry-day forecast and missed check-ins; photo check-in that estimates leaf health on device |
@@ -59,9 +59,9 @@ City of Elmina bounding box from Sep 2024 onwards in the first page of results (
 Landsat C2 L2 surface temp (30 m, free) ─┐
 Canopy layer (drone / aerial / survey)  ─┼─► per-segment Heat exposure ─┐
 Street network (SDP CAD / OpenStreetMap) ┘                              │
-Destinations + walking counts ─► Pedestrian-demand model ───────────────┼─► Shade Gap Score (0–100)
+Destinations + walking counts ─► Pedestrian-demand model ───────────────┼─► Shade Gap Score (0 to 100)
 Schools, clinics, senior centres ─► Vulnerability uplift ───────────────┤
-Street orientation (E–W vs N–S) ────────────────────────────────────────┘
+Street orientation (E-W vs N-S) ────────────────────────────────────────┘
                                    │
           ┌────────────────────────┼─────────────────────────┐
    Planting optimiser        Cool Walk router          Tree-care risk + photo check
@@ -69,9 +69,9 @@ Street orientation (E–W vs N–S) ──────────────�
   species diversity)        edge cost)               leaf-health vision)
 ```
 
-* `engine.js` — all logic as pure functions (browser + Node).
-* `app.js` — UI (vanilla JS + SVG, no framework, no external CDN).
-* `data/sample_data.js` — generated synthetic precinct.
+* `engine.js` holds all the logic as pure functions (browser and Node).
+* `app.js` is the UI, written in vanilla JS and SVG with no framework or external CDN.
+* `data/sample_data.js` is the generated synthetic precinct.
 
 ### Prototype vs pilot
 | Component | In this prototype | In the pilot |
@@ -83,10 +83,10 @@ Street orientation (E–W vs N–S) ──────────────�
 | Species, costs, crown sizes | indicative assumptions | SDP Landscape + TRCRC / ERT nursery values |
 
 ## Evidence used (public sources)
-* Dense roadside tree canopy reduced mean radiant temperature by 18.7 °C (35%) and PET by 10.6 °C (25%) vs unshaded roads; E–W roads gain most — Zaki et al. (2020), *Sustainability* 12(3):1053, Kuala Lumpur field study. https://www.mdpi.com/2071-1050/12/3/1053
-* Urban tree planting cohorts: median annual mortality 4.4–6.5%, highest in the first five years — Hilbert et al. (2019), *Arboriculture & Urban Forestry* 45(5). https://auf.isa-arbor.com/content/45/5/167
-* Landsat Collection 2 surface temperature product (free, 30 m) — USGS. https://www.usgs.gov/landsat-missions/landsat-collection-2-surface-temperature
-* City of Elmina: target of 210,000 trees, ERT native nursery with TRCRC, 300-acre Central Park — Sime Darby Property. https://www.urban-biodiversity.thestar.com.my/sime-darby-property/ and https://www.simedarbyproperty.com/press-releases/sime-darby-property-trcrc-tie-forest-conservation
+* Dense roadside tree canopy reduced mean radiant temperature by 18.7 °C (35%) and PET by 10.6 °C (25%) compared with unshaded roads, and east-west roads gained the most. Source: Zaki et al. (2020), *Sustainability* 12(3):1053, a Kuala Lumpur field study. https://www.mdpi.com/2071-1050/12/3/1053
+* Newly planted urban trees die at a median rate of 4.4 to 6.5% a year, most often in their first five years. Source: Hilbert et al. (2019), *Arboriculture & Urban Forestry* 45(5). https://auf.isa-arbor.com/content/45/5/167
+* The Landsat Collection 2 surface temperature product is free at 30 m resolution (USGS). https://www.usgs.gov/landsat-missions/landsat-collection-2-surface-temperature
+* City of Elmina: target of 210,000 trees, ERT native nursery with TRCRC, 300-acre Central Park (Sime Darby Property). https://www.urban-biodiversity.thestar.com.my/sime-darby-property/ and https://www.simedarbyproperty.com/press-releases/sime-darby-property-trcrc-tie-forest-conservation
 
 ## AI-use disclosure
 This prototype's code, sample-data generator, documentation and the demo-video

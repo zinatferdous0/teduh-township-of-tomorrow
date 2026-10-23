@@ -23,7 +23,7 @@ def tree(path, healthy, seed):
     im = im.filter(ImageFilter.GaussianBlur(0.8))
     d = ImageDraw.Draw(im)
     d.rectangle([0, H - 30, W, H], fill=(0, 0, 0))
-    d.text((10, H - 24), "ILLUSTRATION - computer-generated sample, not a real photo", fill=(255, 255, 255))
+    d.text((10, H - 24), "ILLUSTRATION ONLY. Computer-generated sample, not a real photo.", fill=(255, 255, 255))
     im.save(path, quality=90)
 tree(out / "sample_tree_healthy.jpg", True, 1)
 tree(out / "sample_tree_stressed.jpg", False, 2)
