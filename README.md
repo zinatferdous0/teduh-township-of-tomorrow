@@ -4,6 +4,9 @@
 Team TEDUH · Universiti Teknologi Malaysia (UTM)
 Zinat Ferdous (team leader, zinatferdousmicrosoft365@gmail.com) · Manjishtha Chakma · Shanjana Rahman Provi
 
+**Live demo:** https://zinatferdous0.github.io/teduh-township-of-tomorrow/  
+**Demo video (about 5 min):** https://youtu.be/S71g6BSUUzc
+
 TEDUH (Malay: *shaded, sheltered*) is a heat-shade intelligence tool for township
 landscape teams, plus a resident app. It answers one question: **where should the
 next tree go so that it cools the most people who actually walk, and how do we keep
